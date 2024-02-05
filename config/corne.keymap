@@ -9,6 +9,29 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        Ae: Ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp LEFT_CONTROL &kp LEFT_ALT>;
+            label = "AE";
+        };
+
+        Ue: Ue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp U &kp LEFT_CONTROL &kp LEFT_ALT>;
+            label = "UE";
+        };
+
+        Oe: Oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp LEFT_CONTROL &kp LEFT_ALT>;
+            label = "OE";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -59,8 +82,8 @@
 
         layer_3 {
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans             &kp U            &trans            &kp O           &trans      &kp C_AL_TASK_MANAGER
-&trans      &kp A         &trans        &trans        &trans        &trans          &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY_PAUSE  &kp C_PREVIOUS  &kp C_NEXT  &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans             &Ue              &trans            &Oe             &trans      &kp C_AL_TASK_MANAGER
+&trans      &Ae           &trans        &trans        &trans        &trans          &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY_PAUSE  &kp C_PREVIOUS  &kp C_NEXT  &trans
 &trans      &trans        &trans        &trans        &trans        &trans          &trans             &trans           &trans            &trans          &trans      &trans
                                         &trans        &trans        &trans          &trans             &trans           &trans
             >;
