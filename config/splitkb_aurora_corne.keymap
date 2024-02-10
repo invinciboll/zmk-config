@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+* Copyright (c) 2020 The ZMK Contributors
+*
+* SPDX-License-Identifier: MIT
+*/
 
 #include "keys_de.h"
 #include <behaviors.dtsi>
@@ -10,93 +10,52 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    macros {
-        Ae: Ae {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp A &kp LEFT_CONTROL &kp LEFT_ALT>;
-            label = "AE";
-        };
+	keymap {
+		compatible = "zmk,keymap";
 
-        Ue: Ue {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp U &kp LEFT_CONTROL &kp LEFT_ALT>;
-            label = "UE";
-        };
+		default_layer {
+			bindings = <
+			&kp ESCAPE        &kp DE_Q  &kp DE_W    &kp DE_E    &kp DE_R    &kp DE_T    &kp DE_Y    &kp DE_U    &kp DE_I  &kp DE_O    &kp DE_P    &kp BSPC
+			&kp LSHFT         &kp DE_A  &kp DE_S    &kp DE_D    &kp DE_F    &kp DE_G    &kp DE_H    &kp DE_J    &kp DE_K  &kp DE_L    &kp DE_SEMI    &kp RIGHT_SHIFT
+			&kp LEFT_CONTROL  &kp DE_Z  &kp DE_X    &kp DE_C    &kp DE_V    &kp DE_B    &kp DE_N    &kp DE_M    &kp DE_COMMA &kp DE_DOT     &kp DE_FSLH    &kp RIGHT_ALT
+			&kp TAB     &mo 1       &kp ENTER   &kp SPACE   &mo 2       &kp RIGHT_WIN
+			>;
+		};
 
-        Oe: Oe {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp O &kp LEFT_CONTROL &kp LEFT_ALT>;
-            label = "OE";
-        };
-    };
+		lower_layer {
+			bindings = <
+			&trans  &kp F1      &kp F2      &kp F3      &kp F4      &kp F5          &kp F6          &kp F7    &kp F8  &kp F9     &kp F10  &trans
+			&trans  &kp DE_N1   &kp DE_N2   &kp DE_N3   &kp DE_N4   &kp DE_N5       &kp LEFT_ARROW  &kp DOWN  &kp UP  &kp RIGHT  &trans   &trans
+			&trans  &kp DE_N6   &kp DE_N7   &kp DE_N8   &kp DE_N9   &kp DE_N0       &trans          &trans    &trans  &trans     &trans   &trans
+			&trans  &trans        &trans             &trans          &trans    &trans
+			>;
+		};
 
-    keymap {
-        compatible = "zmk,keymap";
+		raise_layer {
+			bindings = <
+			&trans  &kp DE_EXCL &kp DE_AT            &kp DE_HASH           &kp DE_DLLR          &kp DE_PRCNT    &kp DE_CARET  &kp DE_AMPS        &kp DE_LPAR  &kp DE_RPAR  &kp DE_KP_MULTIPLY  &trans
+			&trans  &kp DE_LT  &kp DE_GREATER_THAN  &kp DE_DOUBLE_QUOTES  &kp DE_SINGLE_QUOTE  &kp DE_EQUAL    &kp DE_MINUS  &kp DE_UNDERSCORE  &kp DE_LBKT  &kp DE_RBKT  &kp DE_BSLH         &kp DE_GRAVE
+			&trans  &trans     &trans            &trans             &trans            &trans       &trans     &kp DE_PLUS        &kp DE_LBRC  &kp DE_RBRC  &kp DE_PIPE         &kp DE_TILDE
+			&trans             &trans            &trans       &trans     &trans          &trans
+			>;
+		};
 
-        default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+		combo_layer {
+			bindings = <
+			&bt BT_CLR      &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans             &kp DE_U_UMLAUT  &trans            &kp DE_O_UMLAUT  &trans      &kp C_AL_TASK_MANAGER
+			&bt BT_CLR_ALL  &kp DE_A_UMLAUT  &kp DE_SHARP_S  &trans        &trans        &trans          &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY_PAUSE  &kp C_PREVIOUS   &kp C_NEXT  &trans
+			&trans          &trans           &trans          &trans        &trans        &trans          &trans             &trans           &trans            &trans           &trans      &trans
+			&trans        &trans        &trans          &trans             &trans           &trans
+			>;
+		};
+	};
 
-            bindings = <
-&kp ESCAPE        &kp Q     &kp W  &kp E    &kp R  &kp T        &kp DE_Y   &kp U  &kp I          &kp O    &kp P     &kp BSPC
-&kp LSHFT         &kp A     &kp S  &kp D    &kp F  &kp G        &kp H      &kp J  &kp K          &kp L    &kp SEMI  &kp RIGHT_SHIFT
-&kp LEFT_CONTROL  &kp DE_Z  &kp X  &kp C    &kp V  &kp B        &kp N      &kp M  &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_ALT
-                                   &kp TAB  &mo 1  &kp ENTER    &kp SPACE  &mo 2  &kp RIGHT_WIN
-            >;
-        };
+	conditional_layers {
+		compatible = "zmk,conditional-layers";
 
-        lower_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
-            bindings = <
-&trans  &kp F1        &kp F2        &kp F3  &kp F4        &kp F5          &kp F6          &kp F7    &kp F8  &kp F9     &kp F10  &trans
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp N3  &kp NUMBER_4  &kp N5          &kp LEFT_ARROW  &kp DOWN  &kp UP  &kp RIGHT  &trans   &trans
-&trans  &kp N6        &kp DE_N7     &kp N8  &kp N9        &kp NUMBER_0    &trans          &trans    &trans  &trans     &trans   &trans
-                                    &trans  &trans        &trans          &trans          &trans    &trans
-            >;
-        };
-
-        raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
-            bindings = <
-&trans  &kp EXCL   &kp AT            &kp HASH           &kp DLLR          &kp PRCNT    &kp CARET  &kp AMPS        &kp LPAR  &kp RPAR  &kp KP_MULTIPLY  &trans
-&trans  &kp DE_LT  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp SINGLE_QUOTE  &kp EQUAL    &kp MINUS  &kp UNDERSCORE  &kp LBKT  &kp RBKT  &kp BSLH         &kp GRAVE
-&trans  &trans     &trans            &trans             &trans            &trans       &trans     &kp PLUS        &kp LBRC  &kp RBRC  &kp PIPE         &kp TILDE
-                                     &trans             &trans            &trans       &trans     &trans          &trans
-            >;
-        };
-
-        layer_3 {
-            bindings = <
-&bt BT_CLR      &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans             &kp DE_U_UMLAUT  &trans            &kp DE_O_UMLAUT  &trans      &kp C_AL_TASK_MANAGER
-&bt BT_CLR_ALL  &kp DE_A_UMLAUT  &kp DE_SHARP_S  &trans        &trans        &trans          &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY_PAUSE  &kp C_PREVIOUS   &kp C_NEXT  &trans
-&trans          &trans           &trans          &trans        &trans        &trans          &trans             &trans           &trans            &trans           &trans      &trans
-                                                 &trans        &trans        &trans          &trans             &trans           &trans
-            >;
-        };
-    };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        Activate3 {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+		access_combo_layer {
+			if-layers = <1 2>;
+			then-layer = <3>;
+		};
+	};
 };
